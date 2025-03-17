@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'git@github.com:rahulswargam/projCert.git'
+                git branch: 'master', url: 'git@github.com:rahulswargam/projCert.git', credentialsId: 'ssh-key'
             }
         }
 

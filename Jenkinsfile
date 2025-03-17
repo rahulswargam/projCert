@@ -14,7 +14,7 @@ pipeline {
 
         stage('Provision Test Server') {
             steps {
-                sh 'ansible-playbook -i /etc/ansible/hosts setup-test-server.yml'
+                sh 'ansible-playbook -i /etc/ansible/hosts ansible/setup-test-server.yml'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Deploy to Test Server') {
             steps {
-                sh 'ansible-playbook -i /etc/ansible/hosts deploy-test.yml'
+                sh 'ansible-playbook -i /etc/ansible/hosts ansible/deploy-test.yml'
             }
         }
 
@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy to Production') {
             steps {
-                sh 'ansible-playbook -i /etc/ansible/hosts deploy-prod.yml'
+                sh 'ansible-playbook -i /etc/ansible/hosts ansible/deploy-prod.yml'
             }
         }
     }

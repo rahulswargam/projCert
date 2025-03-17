@@ -1,0 +1,12 @@
+- name: Deploy PHP App to Production Server
+  hosts: production_server
+  become: yes
+  tasks:
+    - name: Pull Docker Image
+      command: docker pull swargamrahul/edureka:latest
+
+    - name: Stop running container if exists
+      command: docker rm -f myphpapp || true
+
+    - name: Run new container
+      command: docker run -d -p 80:80 --name myphpapp swargamrahul/edureka:latest
